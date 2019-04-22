@@ -1,4 +1,4 @@
-package com.chenjt.web;
+package com.chenjt.controller;
 
 import com.chenjt.common.Properties;
 import com.chenjt.model.UserBasePO;
