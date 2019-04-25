@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 public class AsyncServiceImpl implements AsyncService {
 	@Async("AsyncExecutorPool")
 	@Override
-	public void sync(String arg) throws InterruptedException {
+	public void async(String arg) throws InterruptedException {
 		Thread.sleep(5000L);
 		System.out.println("arg:" + arg);
 		System.out.println(Thread.currentThread().getName());

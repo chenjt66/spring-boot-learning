@@ -15,5 +15,6 @@ import java.util.Set;
 public class TaskSet {
 
 	private Set<DeferredResult<ResponseMsg<String>>> set = new HashSet<>();
+	private Set<DeferredResult<String>> sset = new HashSet<>();
 
 }

@@ -6,6 +6,7 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.validation.beanvalidation.MethodValidationPostProcessor;
 
 import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
@@ -16,7 +17,7 @@ import java.util.concurrent.Executors;
 public class AppConfiguration {
 
 	@Bean("AsyncExecutorPool")
-	public Executor asyncExecutorPool(){
+	public ExecutorService asyncExecutorPool(){
 		return Executors.newCachedThreadPool();
 	}
 

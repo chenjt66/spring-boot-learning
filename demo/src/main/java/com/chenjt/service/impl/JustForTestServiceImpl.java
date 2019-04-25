@@ -18,7 +18,7 @@ public class JustForTestServiceImpl implements JustForTestService {
 	public String justForTest(String arg) {
 		System.out.println(Thread.currentThread().getName() + "===JustForTestSErviceImpl===" + arg);
 		try {
-			asyncService.sync(arg);
+			asyncService.async(arg);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
