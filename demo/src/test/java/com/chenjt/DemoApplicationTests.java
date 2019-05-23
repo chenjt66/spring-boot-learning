@@ -1,7 +1,10 @@
 package com.chenjt;
 
+import com.chenjt.common.Trie;
 import com.chenjt.controller.HelloController;
 import com.chenjt.service.JustForTestService;
+import org.apache.commons.lang3.RandomStringUtils;
+import org.apache.commons.lang3.RandomUtils;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,6 +16,9 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+
+import java.util.List;
+import java.util.Map;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -48,5 +54,19 @@ public class DemoApplicationTests {
 //		String result = justForTestService.justForTest("chenjt");
 //		System.out.println(result);
 //	}
+
+	@Test
+	public void test(){
+		String str = "陈剑挺帅的一比";
+		Trie trie = new Trie();
+		trie.insert("傻逼");
+		trie.insert("你打球真像蔡徐坤");
+		trie.insert("傻逼啊");
+		trie.insert("傻逼傻逼");
+
+		List<Trie.FilterResultElement> ret = trie.filter("卧槽，你打球真像蔡徐坤啊，大傻逼");
+		RandomUtils.nextInt(100, 200);//左闭右开
+		System.out.println(RandomStringUtils.randomNumeric(8));
+	}
 
 }
