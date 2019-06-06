@@ -120,33 +120,31 @@ public class TaskController {
 	@RequestMapping(value = "/get3", method = RequestMethod.GET)
 	public String get3(){
 		log.info("调用开始");
-//		async();
-//		try {
-//			asyncService.async("chenjt");
-//		} catch (InterruptedException e) {
-//			e.printStackTrace();
-//		}
-		executorService.execute(() ->{
-			Future<String> result = executorService.submit(new Callable<String>() {
-				@Override
-				public String call() throws Exception {
-					log.info("线程休眠");
-					Thread.sleep(3000L);
-					return "true";
-				}
-			});
-			String res = null;
-			try {
-				res = result.get(2L, TimeUnit.SECONDS);
-			} catch (Exception e) {
-				log.error("超时异常", e);
-				get3();
-			}
-			if (res != null && res.equals("false")){
-				log.info("返回失败");
-				get3();
+		async();
+		try {
+			asyncService.async("chenjt");
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		Future<String> result = executorService.submit(new Callable<String>() {
+			@Override
+			public String call() throws Exception {
+				log.info("线程休眠");
+				Thread.sleep(5000L);
+				return "true";
 			}
 		});
+		String res = null;
+		try {
+			res = result.get(3L, TimeUnit.SECONDS);
+		} catch (Exception e) {
+			log.error("超时异常", e);
+			get3();
+		}
+		if (res != null && res.equals("false")){
+			log.info("返回失败");
+			get3();
+		}
 		log.info("调用结束");
 		return "helloWorld";
 	}
